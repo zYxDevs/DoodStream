@@ -11,7 +11,7 @@ d = DoodStream(api)
 @click.group()
 def main():
     """Doodstream free video hosting cli"""
-    if api == None or len(api) == 0:
+    if api is None or len(api) == 0:
         print("Please set doodstream api key in environment variable first")
         print("$ export DOODSTREAM_API=your_key_here")
         sys.exit()
@@ -24,7 +24,7 @@ def account():
     print("#" * 10 + " Account Info " + "#" * 10)
     print(f"Email : {data['email']}")
     print(f"Balance : ${data['balance']}")
-    print(f"Used Storage : {int(int(data['storage_used'])/1024)} MB")
+    print(f"Used Storage : {int(data['storage_used']) // 1024} MB")
     print(f"Storage Left : {data['storage_left']}")
     print(f"Premium Expire : {data['premim_expire']}")
     print("#" * 40)
@@ -79,11 +79,11 @@ def remote(direct_link):
         print(
             "Please see your doodstream remote upload dashboard for further information"
         )
-        print("#" * 40)
     else:
         print("#" * 10 + " Remote Upload " + "#" * 10)
         print("\nPlease add http:// or https:// in link\n")
-        print("#" * 40)
+
+    print("#" * 40)
 
 
 @main.command()
